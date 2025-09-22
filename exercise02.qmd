@@ -1,7 +1,7 @@
 ---
 title: "Getting started with R and Python"
 date: 2025-09-22
-author: "Your name"
+author: "Andrea"
 format: html
 embed-resources: true
 ---
@@ -17,7 +17,7 @@ embed-resources: true
  - Calculate `2 + 6 * 5 ^ 2`
  
 ```{r}
-# Write answer here
+2 + 6 * 5 ^ 2
 ```
 
 
@@ -32,7 +32,7 @@ Exponentiation
 
 
 ```{r}
-# Write answer here
+(2 + 6) * 5 ^ 2
 ```
  
 
@@ -46,13 +46,25 @@ b = 10
 ```
 
 ```{python}
-# Write answer here
+c = a
+a = b
+b = c
+print(a, b)
+
+b = b + a
+a = b - a
+b = b - a
+print(a, b)
+
+a,b = b,a
+print(a, b)
 ```
 
 ### What is the output of the following code?
 
 ```{python}
-# Write answer here
+x = 7
+1 < x < 10 < x + 3 <= 13
 ```
 
 Explain in your words!
@@ -81,7 +93,7 @@ Consider `is.na()` to identify indeces of missing positions.
  * How large is error that you make when ignore missing values?
 
 ```{r}
-# Write answer here
+
 ```
 
 ### Create a data frame
