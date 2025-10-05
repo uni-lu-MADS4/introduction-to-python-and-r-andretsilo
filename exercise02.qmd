@@ -93,7 +93,10 @@ Consider `is.na()` to identify indeces of missing positions.
  * How large is error that you make when ignore missing values?
 
 ```{r}
-
+ages <- c(18, 20, 34, 53, 12, NA, NA, 72, 75, 13)
+mean(ages)
+clean_ages <- replace(ages, is.na(ages), 0)
+mean(clean_ages)
 ```
 
 ### Create a data frame
@@ -106,7 +109,14 @@ Paul  | 16  | 57.0 |green  |   1
  John  |17   |65.3 | blue    | 2
 
 ```{r}
-# Write answer here
+df <- data.frame(
+  name = c("Paul", "Mary", "Sara", "John"),
+  age = c(16, 16, 16, 17),
+  weight = c(57.0, 50.0, 52.6, 65.3),
+  eye = c("green", "blue", "black", "blue"),
+  group = c(1, 1, 2, 2)
+)
+df
 ```
 
 Assign the data frame to a variable named `classroom`.
@@ -116,7 +126,7 @@ Describe the type of variables in `classroom`.
 Which data structure would you use in base Python?
 
 ```{python}
-# Write answer here
+# A list of lists
 ```
 
 
@@ -143,7 +153,8 @@ You will work with the built-in `mtcars` dataset (R) and a Python equivalent der
 
 Run this R code to represent `mtcars` data frame:
 ```{r}
-head(mtcars, 10)
+df <- head(mtcars, 10)
+df
 ```
 
 Run this Python code to create a dictionary mimicking `mtcars`:
@@ -205,13 +216,20 @@ Using `mtcars` (R) and the provided dictionary (Python):
 - In R, calculate the average `mpg` for cars with `cyl == 6` using **vectorized** operations.
    
 ```{r}
-# Write answer here
+mean(mtcars$mpg[mtcars$cyl == 6])
 ```
 
 - In base Python, calculate the same quantity.
 
 ```{python}
-# Write answer here
+sum = 0
+counter = 0
+for i in range(len(mtcars.get("mpg"))):
+  if mtcars.get("cyl")[i] == 6:
+    sum += mtcars.get("mpg")[i]
+    counter += 1
+print(sum / counter)
+  
 ```
 
 
@@ -220,13 +238,17 @@ Using `mtcars` (R) and the provided dictionary (Python):
 - In R, count the number of cars where `mpg > 20` and `hp <= 100` using vectorized logical operations.
 
 ```{r}
-# Write answer here
+nrow(mtcars[mtcars$mpg > 20 & mtcars$hp <= 100, ])
 ```
 
 - In Python, perform the same operation.
 
 ```{python}
-# Write answer here
+count = 0
+for i in range(len(mtcars["mpg"])):
+  if mtcars["mpg"][i] > 20 and mtcars["hp"][i] <= 100:
+    count += 1
+print(count)
 ```
 
 
@@ -237,14 +259,19 @@ Using `mtcars` (R) and the provided dictionary (Python):
 - In R, check the type of `mtcars$mpg` and coerce it to integer.
 
 ```{r}
-# Write answer here
+typeof(mtcars$mpg)
+as.integer(mtcars$mpg)
 ```
 
 - In Python, check the type of `mtcars['mpg']` and coerce it to a list of integers.
 
  
 ```{python}
-# Write answer here
+type(mtcars["mpg"][0])
+integer_mpg = list()
+for i in range(len(mtcars['mpg'])):
+  integer_mpg.append(int(mtcars['mpg'][i]))
+print(integer_mpg)
 ```
 
 
@@ -252,13 +279,15 @@ Using `mtcars` (R) and the provided dictionary (Python):
 - In R, subset `mtcars` to select rows where `gear == 4` and columns `mpg`, and `hp`.
 
 ```{r}
-# Write answer here
+subset(mtcars, gear == 4, select = c(mpg, hp))
 ```
 
 - In Python, perform the same operation using explicit iteration.
 
 ```{python}
-# Write answer here
+for i in range(len(mtcars['hp'])):
+  if mtcars['gear'][i] == 4:
+    print(str(mtcars['mpg'][i]) + ' ' + str(mtcars['hp'][i]))
 ```
 
 
@@ -269,12 +298,21 @@ Using `mtcars` (R) and the provided dictionary (Python):
 - In R, load the `tidyverse` package and use `dplyr::filter()` to select cars with `am == 1` (manual transmission).
 
 ```{r}
-# Write answer here
+library(tidyverse)
+dplyr::filter(mtcars, am == 1)
 ```
 
 - In Python, import the `statistics` module and calculate the mean `mpg` for cars with `am == 1`.
 ```{python}
-# Write answer here
+import statistics
+
+manual_cars_mpg = list()
+
+for i in range(len(mtcars['mpg'])):
+  if mtcars['am'][i] == 1:
+    manual_cars_mpg.append(mtcars['mpg'][i])
+
+print(statistics.mean(manual_cars_mpg))
 ```
 
 
